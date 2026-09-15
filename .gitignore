@@ -1,1 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
 
+# Virtual environments
+venv/
+env/
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Dataset cache -----------------------------------------------------
+# The raw DOHA Parquet shards live in the sibling `doha` repo clone
+# (../doha/doha_parsed_cases/*.parquet) and are NOT duplicated here.
+# `src/data_loader.py` builds a local merged cache under data/processed/
+# on first run; every teammate builds/keeps their own copy, so it must
+# stay out of git (it's ~150-200MB, well over reasonable repo size).
+data/raw/
+data/processed/
