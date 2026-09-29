@@ -1,1 +1,11 @@
+# Core data loading dependencies (see src/data_loader.py)
+pandas~=3.0.5
+pyarrow~=23.0.1
 
+# EDA / notebooks
+jupyter~=1.1.1
+matplotlib~=3.10.0
+seaborn~=0.13.2
+
+# Baseline modeling (Sept milestone: TF-IDF + Logistic Regression baseline)
+scikit-learn~=1.7.0
