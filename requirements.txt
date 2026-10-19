@@ -9,3 +9,5 @@ seaborn~=0.13.2
 
 # Baseline modeling (Sept milestone: TF-IDF + Logistic Regression baseline)
 scikit-learn~=1.7.0
+
+PyMuPDF
