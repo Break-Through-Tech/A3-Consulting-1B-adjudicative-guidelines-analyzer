@@ -1,5 +1,13 @@
 # AI Studio Challenge Project Title
 
+## Outcome classifier baseline
+
+The runnable outcome-classification baseline is documented in [CLASSIFIER.md](CLASSIFIER.md).
+Activate `.venv` and run `python -m src.train_outcome` from the repository root.
+See [the evaluation report](outputs/classifier/report.md) and
+`notebooks/01_baseline.ipynb` for the grouped split, results, and limitations.
+For local installation and other workflows, see [LOCAL_SETUP.md](LOCAL_SETUP.md).
+
 > 💡 **Note for the team:** This is just a template. Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and example text in this template and populate this README with your own content. You can work on this README throughout AI Studio, and get feedback from your AI Studio Coach and Challenge Advisor before finalizing it.  
 
 ---
