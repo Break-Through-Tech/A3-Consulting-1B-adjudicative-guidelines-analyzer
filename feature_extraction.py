@@ -1,11 +1,12 @@
 import pandas as pd
-import os
 
 
-# REPO PATH & FILE CHECK
-train_data_path = os.path.join("data", "train.parquet")
-if not os.path.exists(train_data_path):
-    train_data_path = os.path.join("notebooks", "data", "train.parquet")
+# Resolve local generated splits relative to this script, independent of cwd.
+from pathlib import Path
+
+train_data_path = Path(__file__).resolve().parent / "data" / "processed" / "splits" / "train.parquet"
+if not train_data_path.exists():
+    raise FileNotFoundError("Run data_split.ipynb first to generate the exploratory splits.")
 
 print(f"Loading repository data from: {train_data_path}")
 df = pd.read_parquet(train_data_path)

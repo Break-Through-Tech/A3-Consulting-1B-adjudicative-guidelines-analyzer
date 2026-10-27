@@ -1,0 +1,166 @@
+{
+  "DENIED": [
+    {
+      "term": "claimed",
+      "coefficient": -4.014916314801551
+    },
+    {
+      "term": "stated",
+      "coefficient": -3.9315343284164292
+    },
+    {
+      "term": "claims",
+      "coefficient": -3.6274144036447407
+    },
+    {
+      "term": "provided no",
+      "coefficient": -3.275877656113439
+    },
+    {
+      "term": "admitted",
+      "coefficient": -3.2536452175567327
+    },
+    {
+      "term": "provide",
+      "coefficient": -3.0158075186333346
+    },
+    {
+      "term": "delinquent",
+      "coefficient": -2.816967290899445
+    },
+    {
+      "term": "unpaid",
+      "coefficient": -2.79589892782422
+    },
+    {
+      "term": "unresolved",
+      "coefficient": -2.6999176106058917
+    },
+    {
+      "term": "has not",
+      "coefficient": -2.6783192900489237
+    },
+    {
+      "term": "000",
+      "coefficient": -2.6695309291189884
+    },
+    {
+      "term": "not",
+      "coefficient": -2.665192931561167
+    },
+    {
+      "term": "not provide",
+      "coefficient": -2.626070300453576
+    },
+    {
+      "term": "or",
+      "coefficient": -2.563474103559351
+    },
+    {
+      "term": "said",
+      "coefficient": -2.403422205190576
+    },
+    {
+      "term": "item",
+      "coefficient": -2.3824067821482138
+    },
+    {
+      "term": "to",
+      "coefficient": -2.326424577217943
+    },
+    {
+      "term": "owes",
+      "coefficient": -2.303503259517714
+    },
+    {
+      "term": "did not",
+      "coefficient": -2.2930455549427777
+    },
+    {
+      "term": "evidence",
+      "coefficient": -2.2676143285265438
+    }
+  ],
+  "GRANTED": [
+    {
+      "term": "ae",
+      "coefficient": 4.012503861708598
+    },
+    {
+      "term": "credibly",
+      "coefficient": 3.93552679512626
+    },
+    {
+      "term": "paid",
+      "coefficient": 3.706402010650306
+    },
+    {
+      "term": "the",
+      "coefficient": 3.154693884410559
+    },
+    {
+      "term": "and",
+      "coefficient": 3.1076898175086356
+    },
+    {
+      "term": "settled",
+      "coefficient": 2.859509723206294
+    },
+    {
+      "term": "never",
+      "coefficient": 2.7515917203199285
+    },
+    {
+      "term": "credibly testified",
+      "coefficient": 2.575740103909589
+    },
+    {
+      "term": "exhibit",
+      "coefficient": 2.5343554283553846
+    },
+    {
+      "term": "full",
+      "coefficient": 2.4882396666591147
+    },
+    {
+      "term": "in full",
+      "coefficient": 2.4457406980667
+    },
+    {
+      "term": "resolved",
+      "coefficient": 2.246030890236432
+    },
+    {
+      "term": "has",
+      "coefficient": 2.196529076048319
+    },
+    {
+      "term": "provided documentation",
+      "coefficient": 2.184136720368831
+    },
+    {
+      "term": "that applicant",
+      "coefficient": 2.1070092756125787
+    },
+    {
+      "term": "since",
+      "coefficient": 2.072737255192365
+    },
+    {
+      "term": "ax",
+      "coefficient": 2.0567360345242345
+    },
+    {
+      "term": "all",
+      "coefficient": 2.019103190502117
+    },
+    {
+      "term": "tr at",
+      "coefficient": 1.8750018032289468
+    },
+    {
+      "term": "learned",
+      "coefficient": 1.8592596981626577
+    }
+  ]
+}

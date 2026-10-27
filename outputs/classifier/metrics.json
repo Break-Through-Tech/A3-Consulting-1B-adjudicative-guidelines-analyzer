@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "created_utc": "2026-10-27T21:44:14.888039+00:00",
+    "seed": 42,
+    "preprocessing_version": "findings-only-v1",
+    "target": "Stored source outcome: DENIED vs GRANTED, hearing decisions only",
+    "source_rows": 33610,
+    "included_rows": 23626,
+    "row_disposition": {
+      "included": 23626,
+      "non_hearing": 3339,
+      "non_binary_outcome": 3093,
+      "appeal_document": 1892,
+      "no_findings_heading": 1627,
+      "duplicate_model_text": 28,
+      "no_safe_section_end": 4,
+      "facts_too_short": 1
+    },
+    "split_counts": {
+      "test": {
+        "DENIED": 2961,
+        "GRANTED": 1762
+      },
+      "train": {
+        "DENIED": 9581,
+        "GRANTED": 5539
+      },
+      "validation": {
+        "DENIED": 2376,
+        "GRANTED": 1407
+      }
+    },
+    "split_manifest_sha256": "9533f6afbaa4045c5579a45c3c7f02948ad141302010fceac62d165e95fef1c8",
+    "split_policy": "First fold of seeded StratifiedGroupKFold(5), then first fold on development with seed+1; approximate 64/16/20. No fold selection by performance.",
+    "group_policy": "Connected components of normalized case number, full document hash and factual input hash; remove identical factual inputs and ambiguous duplicate labels.",
+    "python": "3.13.9",
+    "packages": {
+      "pandas": "3.0.6",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.5.4",
+      "joblib": "1.6.0"
+    },
+    "model_parameters": {
+      "max_features": 20000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2,
+      "C": 1.0,
+      "class_weight": "balanced",
+      "solver": "liblinear",
+      "max_iter": 1000
+    },
+    "evaluation_policy": "Fixed settings; train only on training partition; validation reported before test. No tuning or refit after test evaluation."
+  },
+  "results": {
+    "validation": {
+      "logistic_regression": {
+        "rows": 3783,
+        "accuracy": 0.8162833729844039,
+        "macro_f1": 0.8082134593749337,
+        "micro_f1": 0.8162833729844039,
+        "roc_auc_granted": 0.8961529533668837,
+        "classification_report": {
+          "DENIED": {
+            "precision": 0.8850206138341732,
+            "recall": 0.8131313131313131,
+            "f1-score": 0.8475542882211011,
+            "support": 2376.0
+          },
+          "GRANTED": {
+            "precision": 0.7225,
+            "recall": 0.8216062544420754,
+            "f1-score": 0.7688726305287662,
+            "support": 1407.0
+          },
+          "accuracy": 0.8162833729844039,
+          "macro avg": {
+            "precision": 0.8037603069170867,
+            "recall": 0.8173687837866943,
+            "f1-score": 0.8082134593749337,
+            "support": 3783.0
+          },
+          "weighted avg": {
+            "precision": 0.8245748026619073,
+            "recall": 0.8162833729844039,
+            "f1-score": 0.8182904520135634,
+            "support": 3783.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1932,
+            444
+          ],
+          [
+            251,
+            1156
+          ]
+        ]
+      },
+      "majority_class": {
+        "rows": 3783,
+        "accuracy": 0.6280729579698652,
+        "macro_f1": 0.38577691183633706,
+        "micro_f1": 0.6280729579698652,
+        "roc_auc_granted": 0.5,
+        "classification_report": {
+          "DENIED": {
+            "precision": 0.6280729579698652,
+            "recall": 1.0,
+            "f1-score": 0.7715538236726741,
+            "support": 2376.0
+          },
+          "GRANTED": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1407.0
+          },
+          "accuracy": 0.6280729579698652,
+          "macro avg": {
+            "precision": 0.3140364789849326,
+            "recall": 0.5,
+            "f1-score": 0.38577691183633706,
+            "support": 3783.0
+          },
+          "weighted avg": {
+            "precision": 0.39447564053301604,
+            "recall": 0.6280729579698652,
+            "f1-score": 0.48459209226705624,
+            "support": 3783.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2376,
+            0
+          ],
+          [
+            1407,
+            0
+          ]
+        ]
+      }
+    },
+    "test": {
+      "logistic_regression": {
+        "rows": 4723,
+        "accuracy": 0.823629049333051,
+        "macro_f1": 0.8164189083915534,
+        "micro_f1": 0.823629049333051,
+        "roc_auc_granted": 0.9089075499465048,
+        "classification_report": {
+          "DENIED": {
+            "precision": 0.8943661971830986,
+            "recall": 0.8149273893954745,
+            "f1-score": 0.8528008482063969,
+            "support": 2961.0
+          },
+          "GRANTED": {
+            "precision": 0.7293827160493828,
+            "recall": 0.8382519863791147,
+            "f1-score": 0.7800369685767098,
+            "support": 1762.0
+          },
+          "accuracy": 0.823629049333051,
+          "macro avg": {
+            "precision": 0.8118744566162407,
+            "recall": 0.8265896878872946,
+            "f1-score": 0.8164189083915534,
+            "support": 4723.0
+          },
+          "weighted avg": {
+            "precision": 0.8328161455723412,
+            "recall": 0.823629049333051,
+            "f1-score": 0.8256549756873393,
+            "support": 4723.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2413,
+            548
+          ],
+          [
+            285,
+            1477
+          ]
+        ]
+      },
+      "majority_class": {
+        "rows": 4723,
+        "accuracy": 0.6269320347236925,
+        "macro_f1": 0.3853461738677772,
+        "micro_f1": 0.6269320347236925,
+        "roc_auc_granted": 0.5,
+        "classification_report": {
+          "DENIED": {
+            "precision": 0.6269320347236925,
+            "recall": 1.0,
+            "f1-score": 0.7706923477355544,
+            "support": 2961.0
+          },
+          "GRANTED": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1762.0
+          },
+          "accuracy": 0.6269320347236925,
+          "macro avg": {
+            "precision": 0.31346601736184626,
+            "recall": 0.5,
+            "f1-score": 0.3853461738677772,
+            "support": 4723.0
+          },
+          "weighted avg": {
+            "precision": 0.39304377616278924,
+            "recall": 0.6269320347236925,
+            "f1-score": 0.48317172171183076,
+            "support": 4723.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2961,
+            0
+          ],
+          [
+            1762,
+            0
+          ]
+        ]
+      }
+    }
+  }
+}
