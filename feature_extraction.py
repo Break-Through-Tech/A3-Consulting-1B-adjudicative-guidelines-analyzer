@@ -34,7 +34,7 @@ def apply_keyword_heuristics(text):
 
 
 # AI PROMPT TEMPLATE GENERATOR (RAG Box)
-# This serves as the master instruction card your team's RAG system will use
+# This serves as the master instruction card our team's RAG system will use (if need be)
 def get_llm_prompt_template(case_narrative):
     prompt_blueprint = f"""
     You are an expert security clearance adjudicator. 
@@ -63,3 +63,5 @@ print("\nSuccess! Part B (Master RAG Prompt Card Ready):")
 # Take the first case narrative row in your repo files and test your template layout
 sample_case = df['full_text'].iloc[0]
 print(get_llm_prompt_template(sample_case[:300] + "... [Truncated for preview]"))
+
+# ------- Will alter as we go along in this proj depending on the project's specific classification -------
