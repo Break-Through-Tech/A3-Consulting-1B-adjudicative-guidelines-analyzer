@@ -1,8 +1,8 @@
 # Outcome classifier
 
 This implements the team's binary **DENIED / GRANTED outcome baseline** using
-TF-IDF and Logistic Regression. It is separate from multi-label guideline
-classification, LLM extraction, and RAG.
+TF-IDF and Logistic Regression. The separate multi-label classifier predicts A–M guideline letters. See
+[how both classifiers work](GUIDELINES.md) for training, prediction, and evaluation.
 
 ## Run
 

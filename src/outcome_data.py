@@ -64,6 +64,33 @@ def extract_facts(text: str) -> tuple[str, str, int, int]:
     return facts, "", start.end(), end.start()
 
 
+def related_case_groups(candidates: pd.DataFrame) -> list[int]:
+    """Connect case IDs and duplicate texts transitively before filtering copies."""
+    parent = {int(r): int(r) for r in candidates.row_id}
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    seen = {}
+    for row in candidates.itertuples(index=False):
+        case = normalized(row.case_number)
+        docket = re.search(r"\b\d{2}-\d{4,6}\b", case)
+        case = docket.group() if docket else case
+        keys = [("document", row.document_hash), ("facts", row.model_text_hash)]
+        if case and case not in {"unknown", "none", "nan", ""}:
+            keys.append(("case", case))
+        for key in keys:
+            if key in seen:
+                a, b = find(int(row.row_id)), find(seen[key])
+                parent[max(a, b)] = min(a, b)
+            else:
+                seen[key] = int(row.row_id)
+    return [find(int(r)) for r in candidates.row_id]
+
+
 def prepare_cases(raw: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """One audit record per source row, including explicit exclusion reasons."""
     if not raw.row_id.is_unique:
@@ -90,30 +117,7 @@ def prepare_cases(raw: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         bad = candidates[column].isin(conflicts[conflicts > 1].index)
         audit.loc[candidates.index[bad], "reason"] = "conflicting_duplicate_labels"
         candidates = candidates[~bad].copy()
-    # Connect case IDs AND duplicate texts transitively before removing copies.
-    parent = {int(r): int(r) for r in candidates.row_id}
-
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-
-    seen = {}
-    for row in candidates.itertuples(index=False):
-        case = normalized(row.case_number)
-        docket = re.search(r"\b\d{2}-\d{4,6}\b", case)
-        case = docket.group() if docket else case
-        keys = [("document", row.document_hash), ("facts", row.model_text_hash)]
-        if case and case not in {"unknown", "none", "nan", ""}:
-            keys.append(("case", case))
-        for key in keys:
-            if key in seen:
-                a, b = find(int(row.row_id)), find(seen[key])
-                parent[max(a, b)] = min(a, b)
-            else:
-                seen[key] = int(row.row_id)
-    candidates["split_group"] = [find(int(r)) for r in candidates.row_id]
+    candidates["split_group"] = related_case_groups(candidates)
     dup = candidates.duplicated("model_text_hash", keep="first")
     audit.loc[candidates.index[dup], "reason"] = "duplicate_model_text"
     candidates = candidates[~dup].copy().reset_index(drop=True)
